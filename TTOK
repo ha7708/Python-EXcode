@@ -1,0 +1,24 @@
+# 떡 개수, 각각 다른 리스트 => 절단기 로 잘라서 나머지끼리 더한 값 = 손님 요청길이(M)  이 되는 높이(h)구하기
+n = int(input("떡 개수: "))
+m = int(input("요청 길이(손님): "))
+arr = list(map(int, input("떡(n개) : ").split()))
+srt = sorted(arr, reverse = True)
+print("srt[0]: %d" % (srt[0]))
+big = srt[0]
+
+for i in range(big, 0, -1):  # i = 19 , 18 , 17 .... ~0
+    sum1 = 0
+    for j in range(n):  # j = 0 ~ 4
+        
+        print("%d회차 %d 회전" %(i,j+1))
+        if arr[j] - i <= 0:
+            continue
+        else:
+            sum1 += arr[j] - i  # arr[j] = 19 , 15 , 10 , 17
+        print("arr[j](%d) - i(%d) : sum1 (%d)" % (arr[j], i, sum1))
+    if sum1 == m:
+        h = i
+        print("절단기 높이 h: %d" % h)
+    else:
+        continue
+    print("="*80)
